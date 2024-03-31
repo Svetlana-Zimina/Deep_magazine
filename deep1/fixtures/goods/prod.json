@@ -1,0 +1,86 @@
+[
+    {
+        "model": "goods.products",
+        "pk": 1,
+        "fields": {
+            "name": "Бездна\" №43",
+            "slug": "bezdna-43",
+            "description": "Журнал \"Бездна\" №43, печатная версия",
+            "image": "",
+            "price": "500.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 3
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 2,
+        "fields": {
+            "name": "\"Бездна\" №43 pdf",
+            "slug": "bezdna-43-pdf",
+            "description": "Журнал \"Бездна\" №43, pdf формат",
+            "image": "",
+            "price": "250.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 3
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 3,
+        "fields": {
+            "name": "\"Бездна\" №46",
+            "slug": "bezdna-46",
+            "description": "Журнал \"Бездна\" №46, печатная версия",
+            "image": "",
+            "price": "500.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 3
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 4,
+        "fields": {
+            "name": "\"Бездна\" №46 pdf",
+            "slug": "bezdna-46-pdf",
+            "description": "Журнал \"Бездна\" №46, pdf формат",
+            "image": "",
+            "price": "250.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 3
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 5,
+        "fields": {
+            "name": "Наклейки 1",
+            "slug": "stickers-1",
+            "description": "Наклейки \"Спелеокотик\" вриант 1",
+            "image": "",
+            "price": "100.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": 4
+        }
+    },
+    {
+        "model": "goods.products",
+        "pk": 6,
+        "fields": {
+            "name": "Наклейки 2",
+            "slug": "stickers-2",
+            "description": "Наклейки \"Спелеокотик\" вариант 1",
+            "image": "",
+            "price": "100.00",
+            "discount": "0.00",
+            "quantity": 10,
+            "category": null
+        }
+    }
+]
