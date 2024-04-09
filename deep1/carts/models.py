@@ -8,6 +8,7 @@ class CartQueryset(models.QuerySet):
     
     def total_price(self):
         """Полная сумма товаров в корзине."""
+
         return sum(cart.products_price() for cart in self)
 
     def total_quantity(self):
@@ -64,7 +65,7 @@ class Cart(models.Model):
             f'Количество {self.quantity}'
         )
 
-    def pruducts_price(self):
-        """Метод считает стоимость определенного продукта в корзине."""
+    def products_price(self):
+        """Метод считает общую стоимость определенного продукта в корзине."""
 
         return round(self.product.sell_price() * self.quantity, 2)
