@@ -83,9 +83,13 @@ class Products(models.Model):
         return self.name
 
     def display_id(self):
+        """Отображение id товара на сайте."""
+
         return f'{self.id:05}'
 
     def sell_price(self):
+        """Расчет стоимости товара с учетом скидки."""
+
         if self.discount:
             return round(self.price - self.price*self.discount/100, 2)
 
