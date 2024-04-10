@@ -35,6 +35,10 @@ def cart_change(request, product_slug):
     pass
 
 
-def cart_remove(request, product_slug):
-    """Удаление товара из корзины."""
-    pass
+def cart_remove(request, cart_id):
+    """Удаление корзины."""
+
+    cart = Cart.objects.get(id=cart_id)
+    cart.delete()
+
+    return redirect(request.META.get('HTTP_REFERER'))
