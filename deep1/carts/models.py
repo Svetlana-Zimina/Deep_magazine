@@ -59,8 +59,15 @@ class Cart(models.Model):
     objects = CartQueryset().as_manager()
 
     def __str__(self):
+        if self.user:
+            return (
+                f'Корзина {self.user.first_name} {self.user.last_name} | ',
+                f'Товар {self.product.name} | ',
+                f'Количество {self.quantity}'
+            )
+        
         return (
-            f'Корзина {self.user.first_name} {self.user.last_name} | ',
+            'Анонимная корзина | ',
             f'Товар {self.product.name} | ',
             f'Количество {self.quantity}'
         )
