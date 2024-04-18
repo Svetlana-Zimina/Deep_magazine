@@ -35,6 +35,8 @@ class ProductsAdmin(admin.ModelAdmin):
         'slug',
         'description',
         'image',
+        'image_2',
+        'image_3',
         ('price', 'discount'),
         'quantity'
     ]

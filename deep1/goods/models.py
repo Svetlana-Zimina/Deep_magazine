@@ -49,6 +49,18 @@ class Products(models.Model):
         blank=True,
         null=True
     )
+    image_2 = models.ImageField(
+        verbose_name='Изображение 2',
+        upload_to='goods_images',
+        blank=True,
+        null=True
+    )
+    image_3 = models.ImageField(
+        verbose_name='Изображение 3',
+        upload_to='goods_images',
+        blank=True,
+        null=True
+    )
     price = models.DecimalField(
         verbose_name='Цена',
         default=0.00,
