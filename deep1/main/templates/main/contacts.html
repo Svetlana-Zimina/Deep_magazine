@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block modal_cart %}
+{% include "includes/cart_button.html" %}
+{% endblock modal_cart %}
+
+{% block content %}
+    <div class="row mt-1">
+        <div class="col-lg-2">
+            <!-- Пустой блок на Ваше усмотрение -->
+        </div>
+        <div class="col-lg-10">
+            <!-- Контент на странице -->
+            <div class="mt-5 pt-5 bg-dark custom-shadow rounded">
+                <p class="mt-5 pt-1" style="color:White;">
+                    Здесь нужно написать контакты
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}
+    {% include "includes/footer.html" %}
+{% endblock %}

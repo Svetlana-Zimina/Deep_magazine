@@ -12,16 +12,19 @@
         </div>
         <div class="col-lg-10">
             <!-- Контент на странице -->
-            <div class="mt-5 pt-5 bg-black custom-shadow rounded">
-                <h1 class="mt-5 pt-1" style="color:White;">{{ content }}</h1>
+            <div class="mt-5 pt-5 bg-dark custom-shadow rounded">
+                <p class="mt-5 pt-1" style="color:White;">
+                    Журнал "Бездна"- проект Ассоциации Спелеологов Урала.
+                    Журнал посвящен исследованиям подземных глубин и людям, исследующим пещеры.
+                    <br>Здесь вы найдете последние новости спелеомира России об открытиях и находках в пещерах,
+                    истории исследований и интересные статистики анонсы соревнований и дистанции с них,
+                    а так же материалы о новейших технических решениях или экспериментах в пещерах.
+                    <br>Наша цель- рассказывать о спелеологии на Урале и в стране.
+                </p>
             </div>
         </div>
     </div>
 {% endblock %}
 {% block footer %}
-<footer class="py-4" bgcolor="black">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; CurlyS & Balloon 2024</p>
-    </div>
-</footer>
+    {% include "includes/footer.html" %}
 {% endblock %}

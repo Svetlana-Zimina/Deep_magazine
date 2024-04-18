@@ -1,20 +1,25 @@
 from django.shortcuts import render
 
 
-main_text = (
-    'Журнал "Бездна"- проект Ассоциации Спелеологов Урала.',
-    'Журнал посвящен исследованиям подземных глубин и людям, исследующим пещеры.',
-    'Здесь вы найдете последние новости спелеомира России об открытиях и находках в пещерах,',
-    'истории исследований и интересные статистики анонсы соревнований и дистанции с них,',
-    'а так же материалы о новейших технических решениях или экспериментах в пещерах.',
-    'Наша цель- рассказывать о спелеологии на Урале и в стране.'
-)
-
-
 def index(request):
 
     context = {
         'title': 'Бездна - Главная',
-        'content': main_text
     }
     return render(request, 'main/index.html', context)
+
+
+def payment_delivery(request):
+
+    context = {
+        'title': 'Бездна - Оплата и доставка',
+    }
+    return render(request, 'main/payment_delivery.html', context)
+
+
+def contacts(request):
+
+    context = {
+        'title': 'Бездна - Контакты',
+    }
+    return render(request, 'main/contacts.html', context)

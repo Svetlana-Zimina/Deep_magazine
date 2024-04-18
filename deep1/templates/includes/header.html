@@ -12,14 +12,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item dropdown ">
-                            <a class="nav-link dropdown-toggle text-white" href="#" role="button"
+                            <a class="nav-link dropdown-toggle text-white" href="" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Информация
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item  text-white" href="#">Доставка и оплата</a></li>
-                                <li><a class="dropdown-item  text-white" href="#">Контактная информация</a></li>
-                                <li><a class="dropdown-item  text-white" href="#">О проекте</a></li>
+                                <li><a class="dropdown-item  text-white" href="{% url 'main:payment-delivery' %}">Доставка и оплата</a></li>
+                                <li><a class="dropdown-item  text-white" href="{% url 'main:contacts' %}">Контактная информация</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -28,6 +27,10 @@
                     </ul>
                 </div>
             </div>
+            <a class="navbar-brand" href="https://vk.com/speleonews"><img src="{% static 'deps/icons/vk.png' %}" width="50" 
+                height="50" border="0"></a>
+            <a class="navbar-brand" href="https://t.me/bezdnaASU"><img src="{% static 'deps/icons/telegram.png' %}" width="50" 
+                height="50" border="0"></a>
         </nav>
     </header>
    
