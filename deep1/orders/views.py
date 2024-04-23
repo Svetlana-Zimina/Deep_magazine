@@ -3,7 +3,8 @@ from django.db import transaction
 from django.forms import ValidationError
 from django.shortcuts import redirect, render
 
-from carts.models import Cart
+# from carts.models import Cart
+from carts.utils import get_user_carts
 
 from orders.forms import CreateOrderForm
 from orders.models import Order, OrderItem
@@ -15,17 +16,14 @@ def create_order(request):
         if form.is_valid():
             try:
                 with transaction.atomic():
-                    user = request.user
-                    cart_items = Cart.objects.filter(user=user)
+                    cart_items = get_user_carts(request)
 
                     if cart_items.exists():
                         # Создать заказ
                         order = Order.objects.create(
-                            user=user,
-                            phone=form.cleaned_data['phone'],
-                            requires_delivery=form.cleaned_data['requires_delivery'],
-                            delivery_address=form.cleaned_data['delivery_address'],
+                            **form.cleaned_data
                         )
+                        
                         # Создать заказанные товары
                         for cart_item in cart_items:
                             product = cart_item.product
@@ -51,17 +49,12 @@ def create_order(request):
                         cart_items.delete()
 
                         messages.success(request, 'Заказ оформлен!')
-                        return redirect('user:users-cart')
+                        return redirect('main:index')
             except ValidationError as e:
                 messages.success(request, str(e))
-                return redirect('cart:order')
+                return redirect('main:index')
     else:
-        initial = {
-            'first_name': request.user.first_name,
-            'last_name': request.user.last_name,
-            }
-
-        form = CreateOrderForm(initial=initial)
+        form = CreateOrderForm()
 
     context = {
         'title': 'Бездна - Оформление заказа',

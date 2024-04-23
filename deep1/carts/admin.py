@@ -22,6 +22,7 @@ class CartTabAdmin(admin.TabularInline):
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
     list_display = [
+        'id',
         'user_display',
         'product',
         'quantity',

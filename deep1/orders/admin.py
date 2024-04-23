@@ -24,29 +24,13 @@ class OrderItemAdmin(admin.ModelAdmin):
     )
 
 
-class OrderTabulareAdmin(admin.TabularInline):
-    model = Order
-    fields = (
-        "requires_delivery",
-        "status",
-        "is_paid",
-        "created_timestamp",
-    )
-
-    search_fields = (
-        "requires_delivery",
-        "is_paid",
-        "created_timestamp",
-    )
-    readonly_fields = ("created_timestamp",)
-    extra = 0
-
-
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
-        "id",
-        "user",
+        "user_first_name",
+        "user_last_name",
+        "phone",
+        "email",
         "requires_delivery",
         "status",
         "is_paid",
@@ -54,10 +38,13 @@ class OrderAdmin(admin.ModelAdmin):
     )
 
     search_fields = (
-        "id",
+        "user_last_name",
+        "user_first_name",
     )
     readonly_fields = ("created_timestamp",)
     list_filter = (
+        "user_first_name",
+        "user_last_name",
         "requires_delivery",
         "status",
         "is_paid",

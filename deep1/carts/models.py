@@ -60,17 +60,9 @@ class Cart(models.Model):
 
     def __str__(self):
         if self.user:
-            return (
-                f'Корзина {self.user.first_name} {self.user.last_name} | ',
-                f'Товар {self.product.name} | ',
-                f'Количество {self.quantity}'
-            )
+            return f'Корзина {self.user.first_name} {self.user.last_name} | Товар {self.product.name} | Количество {self.quantity}'
         
-        return (
-            'Анонимная корзина | ',
-            f'Товар {self.product.name} | ',
-            f'Количество {self.quantity}'
-        )
+        return f'Анонимная корзина | Товар {self.product.name} | Количество {self.quantity}'
 
     def products_price(self):
         """Метод считает общую стоимость определенного продукта в корзине."""

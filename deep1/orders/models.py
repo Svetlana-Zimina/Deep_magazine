@@ -2,7 +2,7 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 from goods.models import Products
-from users.models import User
+# from users.models import User
 
 
 class OrderitemQueryset(models.QuerySet):
@@ -22,18 +22,26 @@ class OrderitemQueryset(models.QuerySet):
 
 
 class Order(models.Model):
-    user = models.ForeignKey(
-        User,
-        verbose_name='Пользователь',
-        on_delete=models.SET_DEFAULT,
-        default=None,
-        related_name='orders',
-        blank=True,
-        null=True
-    )
+    # user = models.ForeignKey(
+    #     User,
+    #     verbose_name='Пользователь',
+    #     on_delete=models.SET_DEFAULT,
+    #     default=None,
+    #     related_name='orders',
+    #     blank=True,
+    #     null=True
+    # )
     created_timestamp = models.DateTimeField(
         auto_now_add=True,
         verbose_name='Дата создания заказа'
+    )
+    user_first_name = models.CharField(
+        max_length=100,
+        verbose_name='Имя покупателя',
+    )
+    user_last_name = models.CharField(
+        max_length=100,
+        verbose_name='Фамилия покупателя',
     )
     phone = PhoneNumberField(
         verbose_name='Номер телефона',
@@ -67,7 +75,7 @@ class Order(models.Model):
         verbose_name_plural = 'Заказы'
 
     def __str__(self):
-        return f'Заказ № {self.pk} | Покупатель {self.user.first_name} {self.user.last_name}'
+        return f'Заказ № {self.pk} | Покупатель {self.user_first_name} {self.user_last_name}'
 
 
 class OrderItem(models.Model):
