@@ -23,3 +23,12 @@ def contacts(request):
         'title': 'Бездна - Контакты',
     }
     return render(request, 'main/contacts.html', context)
+
+
+def work_group(request):
+
+    context = {
+        'title': 'Бездна - Над журналом работают',
+    }
+    return render(request, 'main/work_group.html', context)
+

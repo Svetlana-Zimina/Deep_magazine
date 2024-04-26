@@ -2,8 +2,8 @@ from django.contrib import messages
 from django.db import transaction
 from django.forms import ValidationError
 from django.shortcuts import redirect, render
+from django.core.mail import send_mail
 
-# from carts.models import Cart
 from carts.utils import get_user_carts
 
 from orders.forms import CreateOrderForm
@@ -49,7 +49,17 @@ def create_order(request):
                         cart_items.delete()
 
                         messages.success(request, 'Заказ оформлен!')
+                        
+                        send_mail(
+                            'Test Subject',
+                            'Test message body',
+                            'Zima271985@yandex.ru',
+                            [order.email],
+                            fail_silently=False,
+                        )
+                        
                         return redirect('main:index')
+                    
             except ValidationError as e:
                 messages.success(request, str(e))
                 return redirect('main:index')

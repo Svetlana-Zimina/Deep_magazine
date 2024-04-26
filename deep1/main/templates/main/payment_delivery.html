@@ -12,9 +12,28 @@
         </div>
         <div class="col-lg-10">
             <!-- Контент на странице -->
-            <div class="mt-5 custom-shadow rounded bg-dark frame">
+            <div class="mt-2 custom-shadow rounded bg-dark frame">
                 <p class="page-text">
-                    Добавить информацию по оплате и доставке
+                    <span class="colortext">Оплата<br></span>
+                    Оплата производится картой на сайте. В общую сумму включается стоимость доставки, если выбран вариант "с доставкой".
+                </p>
+                <p class="page-text">
+                    <span class="colortext">Варианты доставки</span>
+                </p>
+                <p class="page-text" style="text-indent:25px display:inline">
+                    1. Самовывоз<br>
+                    Самостоятельно забрать журналы можно
+                    <a class="dropdown-item  text-white" href="{% url 'main:contacts' %}" style="display:inline">
+                        <span class="colortext">здесь</span>
+                    </a>
+                </p>
+                <p class="page-text">
+                    2. Яндекс доставка<br>
+                    Стоимость доставки одного журнала - 100 руб, двух - 200 руб.
+                </p>
+                <p class="page-text">
+                    3. Почта России<br>
+                    Стоимость доставки одного журнала - 250 руб, двух - 300 руб.
                 </p>
             </div>
         </div>
