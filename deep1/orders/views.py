@@ -24,6 +24,11 @@ def create_order(request):
                             **form.cleaned_data
                         )
                         
+                        mail_text = (
+                            f'{order.user_first_name}, '
+                            'Вы сделали заказ на сайте журнала "Бездна":\n\n'
+                        )
+
                         # Создать заказанные товары
                         for cart_item in cart_items:
                             product = cart_item.product
@@ -45,18 +50,27 @@ def create_order(request):
                             product.quantity -= quantity
                             product.save()
 
+                            mail_text = mail_text + f'{product.name} - {quantity} шт' + '\n'
+
+                        # Отправка подтверждения на электронную почту
+                        mail_text += (
+                            '\nСпасибо за заказ!\n'
+                            '\nВозникшие вопросы пишите в группу ВК '
+                            '(в личные сообщения): vk.com/speleonews '
+                            'с указанием имени, фамилии и номера заказа'
+                        )
+                        send_mail(
+                            f'Журнал "Бездна"_Заказ №{order.id}',
+                            mail_text,
+                            'Zima271985@yandex.ru',
+                            [order.email],
+                            fail_silently=False,
+                        )
+
                         # Очистить корзину пользователя после создания заказа
                         cart_items.delete()
 
                         messages.success(request, 'Заказ оформлен!')
-                        
-                        # send_mail(
-                        #    'Test Subject',
-                        #    'Test message body',
-                        #    'Zima271985@yandex.ru',
-                        #    [order.email],
-                        #    fail_silently=False,
-                        # )
                         
                         return redirect('main:index')
                     

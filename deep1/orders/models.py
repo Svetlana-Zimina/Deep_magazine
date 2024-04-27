@@ -54,6 +54,18 @@ class Order(models.Model):
         default=False,
         verbose_name='Требуется доставка'
     )
+    delivery_type = models.CharField(
+        max_length=250,
+        verbose_name='Способ доставки',
+        null=True,
+        blank=True,
+    )
+    pickup_place = models.CharField(
+        max_length=250,
+        verbose_name='Место самовывоза',
+        null=True,
+        blank=True,
+    )
     delivery_address = models.TextField(
         null=True,
         blank=True,
