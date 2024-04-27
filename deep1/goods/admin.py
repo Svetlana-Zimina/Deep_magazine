@@ -37,6 +37,7 @@ class ProductsAdmin(admin.ModelAdmin):
         'image',
         'image_2',
         'image_3',
+        'pdf_file',
         ('price', 'discount'),
         'quantity'
     ]

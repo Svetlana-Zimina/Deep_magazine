@@ -85,6 +85,12 @@ class Products(models.Model):
         null=True,
         related_name='products'
     )
+    pdf_file = models.FileField(
+        verbose_name='Файл PDF',
+        upload_to='pdf_files',
+        blank=True,
+        null=True
+    )
 
     class Meta:
         ordering = ['id',]

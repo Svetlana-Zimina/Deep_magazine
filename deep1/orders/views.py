@@ -50,13 +50,13 @@ def create_order(request):
 
                         messages.success(request, 'Заказ оформлен!')
                         
-                        send_mail(
-                            'Test Subject',
-                            'Test message body',
-                            'Zima271985@yandex.ru',
-                            [order.email],
-                            fail_silently=False,
-                        )
+                        # send_mail(
+                        #    'Test Subject',
+                        #    'Test message body',
+                        #    'Zima271985@yandex.ru',
+                        #    [order.email],
+                        #    fail_silently=False,
+                        # )
                         
                         return redirect('main:index')
                     
