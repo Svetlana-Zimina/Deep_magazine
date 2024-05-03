@@ -5,6 +5,30 @@ from goods.models import Products
 # from users.models import User
 
 
+DELIVERY_TYPES = (
+    ('Яндекс доставка', 'Яндекс доставка'),
+    ('Почта', 'Почта'),
+)
+
+PICKUP_PLACES = (
+    ('«Посольство Уральских гор»', '«Посольство Уральских гор»'),
+    ('«Территория странствий»', '«Территория странствий»'),
+    ('«Центр путешественников»', '«Центр путешественников»'),
+    ('Клуб СГС', 'Клуб СГС'),
+    ('Магазин SportX', 'Магазин SportX'),
+    ('Пермский спелеоклуб', 'Пермский спелеоклуб'),
+    ('«Земля приключений»', '«Земля приключений»'),
+    ('«Вертикаль»', '«Вертикаль»'),
+    ('«Геккон»', '«Геккон»')
+)
+
+STATUS_LIST = (
+    ('В обработке', 'В обработке'),
+    ('На доставке', 'На доставке'),
+    ('Завершен', 'Завершен'),
+)
+
+
 class OrderitemQueryset(models.QuerySet):
     
     def total_price(self):
@@ -59,12 +83,14 @@ class Order(models.Model):
         verbose_name='Способ доставки',
         null=True,
         blank=True,
+        choices=DELIVERY_TYPES
     )
     pickup_place = models.CharField(
         max_length=250,
-        verbose_name='Место самовывоза',
+        verbose_name='Пункт самовывоза',
         null=True,
         blank=True,
+        choices=PICKUP_PLACES
     )
     delivery_address = models.TextField(
         null=True,
@@ -78,7 +104,8 @@ class Order(models.Model):
     status = models.CharField(
         max_length=50,
         default='В обработке',
-        verbose_name='Статус заказа'
+        verbose_name='Статус заказа',
+        choices=STATUS_LIST
     )
 
     class Meta:

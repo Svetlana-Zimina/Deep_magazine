@@ -53,7 +53,7 @@
                             <label for="id_phone" class="form-label">Номер телефона*:</label>
                             <input type="text" class="form-control" id="id_phone" name="phone"
                             value="{% if form.phone.value %}{{ form.phone.value }}{% endif %}"
-                                placeholder="В формате: XXX-XXX-XX-XX"
+                                placeholder="В формате: +7XXXXXXXXXX"
                                 required>
                             {% if form.phone.errors %}
                                 <div class="alert alert-danger alert-dismissible fade show">
@@ -75,7 +75,7 @@
                             <label for="delivery" class="form-label">Способ доставки: </label>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="requires_delivery"
-                                    id="id_requires_delivery" value="1" checked>
+                                    id="id_requires_delivery" value="1">
                                 <label class="form-check-label" for="id_requires_delivery">Нужна
                                     доставка</label>
                             </div>
@@ -85,18 +85,60 @@
                                 <label class="form-check-label" for="id_requires_delivery">Самовывоз</label>
                             </div>
                         </div>
-                        <div class="mb-3" id="deliveryAddressField">
-                            <label for="id_delivery_address" class="form-label">Адрес
-                                доставки*:</label>
-                            <textarea class="form-control" id="id_delivery_address"
-                            value="{% if form.delivery_address.value %}{{ form.delivery_address.value }}{% endif %}"
-                                name="delivery_address" rows="2"></textarea>
-                            {% if form.delivery_address.errors %}
-                                <div class="alert alert-danger alert-dismissible fade show">
-                                    {{form.delivery_address.errors}}
-                                </div>
-                            {% endif %}
-                        </div>
+
+                    
+                            <div class="mb-3" id="pickupPlaceField" style="display:none">
+                                <label for="id_pickup_place" class="form-label">
+                                    Выберите пункт самовывоза:
+                                </label>
+                                <select name="pickup_place" id="id_pickup_place">
+                                    <option value="-">-</option>
+                                    <option value="«Посольство Уральских гор»">«Посольство Уральских гор», г. Уфа, ул. Мустая Карима, 44</option>
+                                    <option value="«Территория странствий»">«Территория странствий», г. Москва, ул. Сайкина, 17</option>
+                                    <option value="«Центр путешественников»">«Центр путешественников», г. Красноярск, ул. Карла Маркса, 49</option>
+                                    <option value="Клуб СГС'">Клуб СГС, Екатеринбург, ул. Вишневая, 46</option>
+                                    <option value="Магазин SportX">Магазин SportX, Екатеринбург, ул. Советская, 16</option>
+                                    <option value="Пермский спелеоклуб">Пермский спелеоклуб, Пермь, ул. Уральская, 114</option>
+                                    <option value="«Земля приключений»">«Земля приключений», Оренбург, ул. Максима Горького, 22</option>
+                                    <option value="«Вертикаль»">Магазин «Вертикаль», Симферополь, бульвар Ленина, 14/2</option>
+                                    <option value="«Геккон»">Магазин «Геккон», Ялта, ул. Московская, 8а</option>
+                                </select>
+                                {% if form.pickup_place.errors %}
+                                    <div class="alert alert-danger alert-dismissible fade show">
+                                        {{form.pickup_place.errors}}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        
+                            <div class="mb-3" id="deliveryTypeField" style="display:none">
+                                <label for="id_delivery_type" class="form-label">
+                                    Выберите вариант доставки:
+                                </label>
+                                <select name="delivery_type" id="id_delivery_type">
+                                    <option value="-">-</option>
+                                    <option value="Яндекс доставка">Яндекс доставка</option>
+                                    <option value="Почта">Почта</option>
+                                </select>
+                                {% if form.delivery_type.errors %}
+                                    <div class="alert alert-danger alert-dismissible fade show">
+                                        {{form.delivery_type.errors}}
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="mb-3" id="deliveryAddressField" style="display:none">
+                                <label for="id_delivery_address" class="form-label">Адрес
+                                    доставки*:</label>
+                                <textarea class="form-control" id="id_delivery_address"
+                                value="{% if form.delivery_address.value %}{{ form.delivery_address.value }}{% endif %}"
+                                    name="delivery_address" rows="2"></textarea>
+                                {% if form.delivery_address.errors %}
+                                    <div class="alert alert-danger alert-dismissible fade show">
+                                        {{form.delivery_address.errors}}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        
+
                     </div>
                     <button type="submit" class="btn btn-dark">Оформить заказ</button>
                 </form>

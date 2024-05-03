@@ -54,6 +54,9 @@ def create_order(request):
 
                         # Отправка подтверждения на электронную почту
                         mail_text += (
+                            f'\nВариант доставки: {order.delivery_type}\n'
+                            f'Адрес доставки: {order.delivery_address}\n'
+                            f'Пункт самовывоза: {order.pickup_place}\n'
                             '\nСпасибо за заказ!\n'
                             '\nВозникшие вопросы пишите в группу ВК '
                             '(в личные сообщения): vk.com/speleonews '

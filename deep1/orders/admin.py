@@ -27,11 +27,11 @@ class OrderItemAdmin(admin.ModelAdmin):
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
-        "user_first_name",
+        "id",
         "user_last_name",
         "phone",
-        "email",
-        "requires_delivery",
+        "delivery_type",
+        "pickup_place",
         "status",
         "is_paid",
         "created_timestamp",
@@ -40,6 +40,8 @@ class OrderAdmin(admin.ModelAdmin):
     search_fields = (
         "user_last_name",
         "user_first_name",
+        "id",
+        "delivery_type"
     )
     readonly_fields = ("created_timestamp",)
     list_filter = (
