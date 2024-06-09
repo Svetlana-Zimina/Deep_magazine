@@ -12,7 +12,7 @@ class MainViewsTests(TestCase):
         cls.guest_client = Client()
     
     def test_main_pages_uses_correct_template(self):
-        """URL-адрес использует соответствующий шаблон."""
+        """URL-адрес приложения main использует соответствующий шаблон."""
         
         templates_pages_names = {
             'main/index.html': reverse('main:index'),
