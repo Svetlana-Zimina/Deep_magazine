@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% include "includes/footer.html" %}
+{% load static %}
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'deps/css/bootstrap/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'deps/css/my_css.css' %}">
+    <!-- Стиль footer-a для главной страницы -->
+    <link rel="stylesheet" href="{% static 'deps/css/my_footer_css.css' %}">
+    <!-- Favicons для разных платформ -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'deps/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'deps/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'deps/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'deps/favicon/site.webmanifest' %}">
+    <title>{{ title }} </title>
+</head>
+
+<body>
+    <div class="col-lg-3">
+        <!-- Контент на странице -->
+        <div class="mt-5 custom-shadow rounded bg-dark frame">
+            <h1 style="font-size: 20; color: white"> 
+                Страница не найдена
+            </h1>
+        </div>
+    </div>
+</body>
+
+</html>

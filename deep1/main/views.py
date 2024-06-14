@@ -32,6 +32,10 @@ def work_group(request):
     }
     return render(request, 'main/work_group.html', context)
 
+def privacy_policy(request):
 
-# def page_not_found_view(request, exception):
-#     return render(request, '404.html', status=404)
+    context = {
+        'title': 'политика конфиденциальности',
+    }
+    return render(request, 'main/privacy_policy.html', context)
+

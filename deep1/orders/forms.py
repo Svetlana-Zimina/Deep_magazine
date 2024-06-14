@@ -49,6 +49,8 @@ class CreateOrderForm(forms.Form):
 
         pattern = re.compile(r"^((\+7|7|8)+([0-9]){10})$")
         if not pattern.match(data):
-            raise forms.ValidationError("Неверный формат номера")
+            raise forms.ValidationError(
+                "Неверный формат номера. Правильный формат: +7ХХХХХХХХХХ"
+            )
 
         return data

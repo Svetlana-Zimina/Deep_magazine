@@ -22,4 +22,4 @@ if settings.DEBUG:
         document_root=settings.MEDIA_ROOT
     )
 
-# handler404 = page_not_found
+handler404 = "deep.views.page_not_found_view"
