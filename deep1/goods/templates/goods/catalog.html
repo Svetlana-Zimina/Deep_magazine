@@ -60,11 +60,11 @@
                 {% for product in goods %}
                     <!-- Карта товара -->
                     <div class="col-lg-4 col-md-6 p-4">
-                        <div class="card border-primary rounded custom-shadow">
+                        <div class="card rounded custom-shadow">
                             {% if  product.image %}
-                                <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
+                                <img src="{{ product.image.url }}" class="card-img-top; img-catalog" alt="{{ product.name }}">
                             {% else %}
-                                <img src="{% static 'deps/images/Not_found_image.png' %}" class="card-img-top" alt="...">
+                                <img src="{% static 'deps/images/Not_found_image.png' %}" class="card-img-top; img-catalog" alt="...">
                             {% endif %}
                             <div class="card-body">
                                 <a href="{% url 'catalog:product' product.slug %}">
