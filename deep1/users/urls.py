@@ -6,5 +6,5 @@ from users import views
 app_name = 'users'
 
 urlpatterns = [
-    path('users-cart/', views.users_cart, name='users-cart'),
+    path('users-cart/', views.UsersCartView.as_view(), name='users-cart'),
 ]

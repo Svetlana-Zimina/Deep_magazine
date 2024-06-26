@@ -6,15 +6,15 @@ from carts import views
 app_name = 'carts'
 
 urlpatterns = [
-    path('cart-add/', views.cart_add, name='cart-add'),
+    path('cart-add/', views.CartAddView.as_view(), name='cart-add'),
     path(
         'cart-change/',
-        views.cart_change,
+        views.CartChangeView.as_view(),
         name='cart-change'
     ),
     path(
         'cart-remove/',
-        views.cart_remove,
+        views.CartRemoveView.as_view(),
         name='cart-remove'
     ),
 ]
