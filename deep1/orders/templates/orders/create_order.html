@@ -140,11 +140,12 @@
                         
 
                     </div>
+                    
                     <input type='checkbox'
-                        onchange="document.getElementById('button1').disabled = !this.checked"
-                        checked/> Нажимая на кнопку я даю свое согласие на обработку персональных данный
-                        и соглашаюсь с условиями <a href="{% url 'main:privacy-policy' %}">политики конфиденциальности</a><br><br>
-                    <button id="button1" type="submit" class="btn btn-dark">Оформить заказ</button>
+                        onchange="document.getElementById('button1').disabled = !this.checked"/>
+                            Нажимая на кнопку я даю свое согласие на обработку персональных данный
+                            и соглашаюсь с условиями <a href="{% url 'main:privacy-policy' %}">политики конфиденциальности</a><br><br>
+                    <button id="button1" type="submit" class="btn btn-dark" disabled>Оформить заказ</button>
                 </form>
             </div>
         </div>
