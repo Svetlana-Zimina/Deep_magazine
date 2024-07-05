@@ -152,8 +152,8 @@ EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
-EMAIL_HOST_USER = 'Zima271985@yandex.ru'
-EMAIL_HOST_PASSWORD = 'ylmrrezmqubrnpto'
+EMAIL_HOST_USER = 'speleonews@yandex.ru'
+EMAIL_HOST_PASSWORD = 'eidabalvuyjswqar'
 
 EMAIL_SERVER = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
