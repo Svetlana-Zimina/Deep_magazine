@@ -1,1 +1,1 @@
-[{"model": "goods.categories", "pk": 2, "fields": {"name": "Все товары", "slug": "all"}}, {"model": "goods.categories", "pk": 3, "fields": {"name": "Журналы", "slug": "magazines"}}, {"model": "goods.categories", "pk": 4, "fields": {"name": "Наклейки", "slug": "stickers"}}, {"model": "goods.categories", "pk": 5, "fields": {"name": "Календари", "slug": "calendars"}}]
+[{"model": "goods.categories", "pk": 1, "fields": {"name": "Журналы", "slug": "zhurnaly"}}]
