@@ -104,10 +104,21 @@
                         <p class="card-text">Цена: <strong>{{ product.sell_price }} руб</strong></p>
                         <h5 class="card-title">{{ product.name }}</h5>
                         <p class="card-text">{{ product.description }}</p>
-                        <a href="{% url 'cart:cart-add' %}" class="btn btn-dark add-to-cart"
-                        data-product-id="{{ product.id }}">
-                        {% csrf_token %}
-                        Добавить в корзину</a>
+
+                        {% if product.price == 0 %}
+                            <button id="button1" type="submit" class="btn btn-dark" >
+                                <a href="{{product.pdf_file.url}}" download="{{product.pdf_file.url}}" style="text-decoration: none; color:white;">
+                                    Скачать
+                                </a>
+                            </button>
+                                    
+                        {% else %}
+                            <a href="{% url 'cart:cart-add' %}" class="btn btn-dark add-to-cart"
+                            data-product-id="{{ product.id }}">
+                            {% csrf_token %}
+                            Добавить в корзину</a>
+                        {% endif %}
+                        
                     </div>
                 </div>
             </div>

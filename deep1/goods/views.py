@@ -3,7 +3,12 @@ from typing import Any
 # from django.db.models import QuerySet
 from django.db.models.base import Model as Model
 # from django.shortcuts import get_list_or_404
+from django.http import FileResponse
+from django.views import View
 from django.views.generic import DetailView, ListView
+from django.http import Http404, HttpResponse
+from django.conf import settings
+import os
 
 from goods.models import Products
 
@@ -57,6 +62,33 @@ class ProductView(DetailView):
         context = super().get_context_data(**kwargs)
         context['title'] = self.object.name
         return context
+
+
+class FileDownloadView(View):
+    # Set FILE_STORAGE_PATH value in settings.py
+    folder_path = os.path.join(settings.MEDIA_ROOT, 'pdf_files/')
+    
+    # Set the content type value
+    content_type_value = 'text/plain'
+    slug_url_kwarg = 'product_slug'
+
+    def get(self, request):
+        product = Products.objects.get(
+            slug=self.kwargs.get(self.slug_url_kwarg)
+        )
+        file_name = f'{product.name}.pdf'
+               
+        file_path = os.path.join(self.folder_path, file_name)
+        if os.path.exists(file_path):
+            with open(file_path, 'rb') as f:
+                response = HttpResponse(
+                    f.read(),
+                    content_type=self.content_type_value
+                )
+                response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+            return response
+        else:
+            raise Http404
 
 
 # def catalog(request, category_slug):

@@ -81,12 +81,21 @@
                                         <p><strong>{{ product.price }} руб</strong></p>
                                     {% endif %}
                                     
-                                    <a href="{% url 'cart:cart-add' %}" class="btn add-to-cart"
-                                    data-product-id="{{ product.id }}">
-                                        {% csrf_token %}
-                                        <img class="mx-1" src="{% static 'deps/icons/cart-plus.svg' %}" alt="Catalog Icon"
-                                            width="32" height="32">
-                                    </a>
+                                    {% if product.price == 0 %}
+                                        <button id="button1" type="submit" class="btn btn-dark" >
+                                            <a href="{{product.pdf_file.url}}" download="{{product.pdf_file.url}}" style="text-decoration: none; color:white;">
+                                                Скачать
+                                            </a>
+                                        </button>
+                                    
+                                    {% else %}
+                                        <a href="{% url 'cart:cart-add' %}" class="btn add-to-cart"
+                                        data-product-id="{{ product.id }}">
+                                            {% csrf_token %}
+                                            <img class="mx-1" src="{% static 'deps/icons/cart-plus.svg' %}" alt="Catalog Icon"
+                                                width="32" height="32">
+                                        </a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
