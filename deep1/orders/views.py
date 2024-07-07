@@ -65,31 +65,32 @@ class CreateOrderView(FormView):
 
                         mail_text = mail_text + f'{product.name} - {quantity} шт' + '\n'
 
-                    # # Отправка подтверждения на электронную почту
-                    # mail_text += (
-                    #     f'\nВариант доставки: {order.delivery_type}\n'
-                    #     f'Адрес доставки: {order.delivery_address}\n'
-                    #     f'Пункт самовывоза: {order.pickup_place}\n'
-                    #     '\nСпасибо за заказ!\n'
-                    #     '\nВозникшие вопросы пишите в группу ВК '
-                    #     '(в личные сообщения): vk.com/speleonews '
-                    #     'с указанием имени, фамилии и номера заказа'
-                    # )
-                    # send_mail(
-                    #     f'Журнал "Бездна"_Заказ №{order.id}',
-                    #     mail_text,
-                    #     'Zima271985@yandex.ru',
-                    #     [order.email],
-                    #     fail_silently=False,
-                    # )
+                    # Отправка подтверждения на электронную почту
+                    mail_text += (
+                        f'\nВариант доставки: {order.delivery_type}\n'
+                        f'Адрес доставки: {order.delivery_address}\n'
+                        f'Пункт самовывоза: {order.pickup_place}\n'
+                        f'Выслать на электронную почту: {order.send_to_email}\n'
+                        '\nСпасибо за заказ!\n'
+                        '\nВозникшие вопросы пишите в группу ВК '
+                        '(в личные сообщения): vk.com/speleonews '
+                        'с указанием имени, фамилии и номера заказа'
+                    )
+                    send_mail(
+                        f'Журнал "Бездна"_Заказ №{order.id}',
+                        mail_text,
+                        'speleonews@yandex.ru',
+                        [order.email],
+                        fail_silently=False,
+                    )
 
-                    # send_mail(
-                    #     f'Новый_Заказ №{order.id}',
-                    #     f'Появился новый заказ: №{order.id}',
-                    #     'Zima271985@yandex.ru',
-                    #     ['Zima271985@yandex.ru'],
-                    #     fail_silently=False,
-                    # )
+                    send_mail(
+                        f'Новый_Заказ №{order.id}',
+                        f'Появился новый заказ: №{order.id}',
+                        'speleonews@yandex.ru',
+                        ['Zima271985@yandex.ru'],
+                        fail_silently=False,
+                    )
 
                     # Очистить корзину пользователя после создания заказа
                     cart_items.delete()
