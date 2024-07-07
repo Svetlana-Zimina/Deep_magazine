@@ -26,7 +26,15 @@ class CreateOrderView(FormView):
                 if cart_items.exists():
                     # Создать заказ
                     order = Order.objects.create(
-                        **form.cleaned_data
+                        user_first_name=form.cleaned_data['user_first_name'],
+                        user_last_name=form.cleaned_data['user_last_name'],
+                        phone=form.cleaned_data['phone'],
+                        email=form.cleaned_data['email'],
+                        requires_delivery=form.cleaned_data['requires_delivery'],
+                        delivery_type=form.cleaned_data['delivery_type'],
+                        delivery_address=form.cleaned_data['delivery_address'],
+                        pickup_place=form.cleaned_data['pickup_place'],
+                        send_to_email=form.cleaned_data['send_to_email'],
                     )
                         
                     mail_text = (

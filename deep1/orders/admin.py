@@ -32,6 +32,7 @@ class OrderAdmin(admin.ModelAdmin):
         "phone",
         "delivery_type",
         "pickup_place",
+        "send_to_email",
         "status",
         "is_paid",
         "created_timestamp",
@@ -48,6 +49,7 @@ class OrderAdmin(admin.ModelAdmin):
         "user_first_name",
         "user_last_name",
         "requires_delivery",
+        "send_to_email",
         "status",
         "is_paid",
     )

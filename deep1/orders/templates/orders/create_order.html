@@ -24,6 +24,17 @@
                 <h3 class="text-center">Детали заказа</h3>
                 <div class="card mb-3">
                 <div class="card-body">
+
+                    {% comment %} <form action="{% url 'orders:create-order' %}" method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type='checkbox'
+                            onchange="document.getElementById('button1').disabled = !this.checked"/>
+                            Нажимая на кнопку я даю свое согласие на обработку персональных данный
+                            и соглашаюсь с условиями <a href="{% url 'main:privacy-policy' %}">политики конфиденциальности</a><br><br>
+                        <button id="button1" type="submit" class="btn btn-dark" disabled>Оформить заказ</button>
+                    </form> {% endcomment %}
+                    
                     <form action="{% url 'orders:create-order' %}" method="post">
                         {% csrf_token %}
                         <div class="row">
@@ -71,6 +82,7 @@
                                 <div class="alert alert-danger alert-dismissible fade show">{{form.email.errors}}</div>
                             {% endif %}
                         </div>
+                        
                         <div class="col-md-12 mb-3">
                             <label for="delivery" class="form-label">Способ доставки: </label>
                             <div class="form-check form-check-inline">
@@ -81,11 +93,15 @@
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="requires_delivery"
-                                    id="id_requires_delivery" value="1">
-                                <label class="form-check-label" for="id_requires_delivery">Самовывоз</label>
+                                    id="id_pickup" value="1">
+                                <label class="form-check-label" for="id_pickup">Самовывоз</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="requires_delivery"
+                                    id="id_send_to_email" value="2">
+                                <label class="form-check-label" for="id_send_to_email">Выслать на электронную почту</label>
                             </div>
                         </div>
-
                     
                             <div class="mb-3" id="pickupPlaceField" style="display:none">
                                 <label for="id_pickup_place" class="form-label">
@@ -137,7 +153,17 @@
                                     </div>
                                 {% endif %}
                             </div>
-                        
+
+                            <div class="mb-3" id="sendToEmailField" style="display:none">
+                                <select name="send_to_email" id="id_send_to_email">
+                                    <option value="Да">Да</option>
+                                </select>
+                                {% if form.send_to_email.errors %}
+                                    <div class="alert alert-danger alert-dismissible fade show">
+                                        {{form.send_to_email.errors}}
+                                    </div>
+                                {% endif %}
+                            </div>
 
                     </div>
                     

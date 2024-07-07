@@ -107,6 +107,10 @@ class Order(models.Model):
         verbose_name='Статус заказа',
         choices=STATUS_LIST
     )
+    send_to_email = models.BooleanField(
+        default=False,
+        verbose_name='Выслать на электронную почту'
+    )
 
     class Meta:
         db_table = 'order'
