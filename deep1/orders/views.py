@@ -1,18 +1,17 @@
 import os
+
 from django.contrib import messages
+from django.core.mail import send_mail
 from django.db import transaction
 from django.forms import ValidationError
 from django.shortcuts import redirect
-from django.core.mail import send_mail
 from django.urls import reverse_lazy
 from django.views.generic import FormView
+from dotenv import load_dotenv
 
 from carts.utils import get_user_carts
-
 from orders.forms import CreateOrderForm
 from orders.models import Order, OrderItem
-
-from dotenv import load_dotenv 
 
 load_dotenv()
 

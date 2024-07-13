@@ -2,9 +2,8 @@ import os
 from pathlib import Path
 
 from django.conf.global_settings import AUTH_USER_MODEL, MEDIA_ROOT, MEDIA_URL
-from django.core.management.utils import get_random_secret_key 
-
-from dotenv import load_dotenv 
+from django.core.management.utils import get_random_secret_key
+from dotenv import load_dotenv
 
 load_dotenv()
 

@@ -1,7 +1,7 @@
 from django.db import models
 
-from users.models import User
 from goods.models import Products
+from users.models import User
 
 
 class CartQueryset(models.QuerySet):

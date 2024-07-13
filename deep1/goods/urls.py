@@ -4,7 +4,6 @@ from django.views.static import serve
 from deep import settings
 from goods import views
 
-
 app_name = 'goods'
 
 urlpatterns = [

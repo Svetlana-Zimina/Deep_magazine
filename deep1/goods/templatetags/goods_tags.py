@@ -3,7 +3,6 @@ from django.utils.http import urlencode
 
 from goods.models import Categories
 
-
 register = template.Library()
 
 

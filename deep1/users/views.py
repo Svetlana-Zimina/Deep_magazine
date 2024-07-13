@@ -1,5 +1,6 @@
 # from django.shortcuts import render
 from typing import Any
+
 from django.views.generic import TemplateView
 
 
