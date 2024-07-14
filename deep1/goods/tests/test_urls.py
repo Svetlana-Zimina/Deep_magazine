@@ -6,6 +6,7 @@ from goods.models import Categories, Products
 
 
 class GoodsURLTests(TestCase):
+    """Тестирование адресов приложения goods."""
 
     @classmethod
     def setUpClass(cls):
@@ -26,30 +27,30 @@ class GoodsURLTests(TestCase):
             discount=0,
             quantity=1,
         )
-    
-    def test_goods_urls_exist_at_desired_location(self): 
+
+    def test_goods_urls_exist_at_desired_location(self):
         """Проверка доступности адресов приложения goods."""
 
-        url_status_code = { 
-            '/catalog/all/': HTTPStatus.OK, 
-            f'/catalog/{self.category.slug}/': HTTPStatus.OK, 
+        url_status_code = {
+            '/catalog/all/': HTTPStatus.OK,
+            f'/catalog/{self.category.slug}/': HTTPStatus.OK,
             f'/catalog/product/{self.product.slug}/': HTTPStatus.OK,
-        } 
+        }
 
-        for url, status_code in url_status_code.items(): 
-            with self.subTest(url=url): 
-                response = self.guest_client.get(url) 
+        for url, status_code in url_status_code.items():
+            with self.subTest(url=url):
+                response = self.guest_client.get(url)
                 self.assertEqual(response.status_code, status_code)
-    
-    def test_goods_urls_uses_correct_templates(self): 
-        """Проверка шаблонов приложения goods.""" 
 
-        url_template = { 
-            f'/catalog/{self.category.slug}/': 'goods/catalog.html', 
-            f'/catalog/product/{self.product.slug}/': 'goods/product.html', 
-        } 
+    def test_goods_urls_uses_correct_templates(self):
+        """Проверка шаблонов приложения goods."""
 
-        for url, template in url_template.items(): 
-            with self.subTest(url=url): 
-                response = self.guest_client.get(url) 
+        url_template = {
+            f'/catalog/{self.category.slug}/': 'goods/catalog.html',
+            f'/catalog/product/{self.product.slug}/': 'goods/product.html'
+        }
+
+        for url, template in url_template.items():
+            with self.subTest(url=url):
+                response = self.guest_client.get(url)
                 self.assertTemplateUsed(response, template)

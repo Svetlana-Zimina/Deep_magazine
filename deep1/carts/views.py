@@ -1,15 +1,16 @@
 from django.http import JsonResponse
-from django.template.loader import render_to_string
+# from django.template.loader import render_to_string
 from django.views import View
 
 from carts.mixins import CartMixin
 from carts.models import Cart
-from carts.utils import get_user_carts
+# from carts.utils import get_user_carts
 from goods.models import Products
 
 
 class CartAddView(CartMixin, View):
-    
+    """Представление для добавления товара в корзину."""
+
     def post(self, request):
         product_id = request.POST.get('product_id')
         product = Products.objects.get(id=product_id)
@@ -26,7 +27,7 @@ class CartAddView(CartMixin, View):
                 product=product,
                 quantity=1
             )
-    
+
         response_data = {
             'message': 'Товар добавлен в корзину',
             'cart_items_html': self.render_cart(request)
@@ -36,6 +37,7 @@ class CartAddView(CartMixin, View):
 
 
 class CartChangeView(CartMixin, View):
+    """Представление для изменения количества товара в корзине."""
 
     def post(self, request):
         cart_id = request.POST.get("cart_id")
@@ -55,10 +57,11 @@ class CartChangeView(CartMixin, View):
 
 
 class CartRemoveView(CartMixin, View):
+    """Представление для удаления товара из корзины."""
 
     def post(self, request):
         cart_id = request.POST.get("cart_id")
-        
+
         cart = self.get_cart(request, cart_id=cart_id)
         quantity = cart.quantity
         cart.delete()
@@ -96,7 +99,7 @@ class CartRemoveView(CartMixin, View):
 #                 product=product,
 #                 quantity=1
 #             )
-    
+
 #     else:
 #         carts = Cart.objects.filter(
 #             session_key=request.session.session_key,
@@ -132,7 +135,7 @@ class CartRemoveView(CartMixin, View):
 
 # def cart_change(request):
 #     """Изменение количества товара в корзине."""
-    
+
 #     cart_id = request.POST.get("cart_id")
 #     quantity = request.POST.get("quantity")
 
@@ -157,7 +160,7 @@ class CartRemoveView(CartMixin, View):
 
 # def cart_remove(request):
 #     """Удаление корзины."""
-    
+
 #     cart_id = request.POST.get('cart_id')
 
 #     cart = Cart.objects.get(id=cart_id)

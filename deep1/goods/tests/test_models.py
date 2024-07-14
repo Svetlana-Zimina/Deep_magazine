@@ -4,14 +4,18 @@ from goods.models import Categories, Products
 
 
 class CategoriesModelTest(TestCase):
+    """Тестирование модели Категория."""
+
     @classmethod
     def setUpClass(cls):
+        """Задание тестовых данных."""
+
         super().setUpClass()
         cls.category = Categories.objects.create(
             name='категория 1',
             slug='category1'
         )
-    
+
     def test_categories_verbose_name(self):
         """verbose_name в полях Categories совпадает с ожидаемым."""
 
@@ -27,17 +31,21 @@ class CategoriesModelTest(TestCase):
                     expected_value
                 )
 
-    def test_category_str(self): 
-        """Проверка метода __str__ модели Categories.""" 
+    def test_category_str(self):
+        """Проверка метода __str__ модели Categories."""
 
-        category = CategoriesModelTest.category 
+        category = CategoriesModelTest.category
         expected_name = category.name
         self.assertEqual(expected_name, str(category))
 
 
 class ProductsModelTest(TestCase):
+    """Тестирование модели Продукты."""
+
     @classmethod
     def setUpClass(cls):
+        """Задание тестовых данных."""
+
         super().setUpClass()
         cls.category = Categories.objects.create(
             name='категория 1',
@@ -52,9 +60,10 @@ class ProductsModelTest(TestCase):
             category=cls.category,
             slug='produkt'
         )
-            
+
     def test_verbose_name(self):
         """verbose_name в полях Products совпадает с ожидаемым."""
+
         product = ProductsModelTest.product
         field_verboses = {
             'name': 'Название',
@@ -76,27 +85,30 @@ class ProductsModelTest(TestCase):
                     expected_value
                 )
 
-    def test_product_str(self): 
-        """Проверка метода __str__ модели Products.""" 
+    def test_product_str(self):
+        """Проверка метода __str__ модели Products."""
 
-        product = ProductsModelTest.product 
+        product = ProductsModelTest.product
         expected_name = product.name
         self.assertEqual(expected_name, str(product))
-    
+
     def test_get_absolute_url(self):
         """Проверка метода get_absolute_url модели Products."""
 
-        product = ProductsModelTest.product 
-        self.assertEquals(product.get_absolute_url(), f'/catalog/product/{product.slug}/')
+        product = ProductsModelTest.product
+        self.assertEquals(
+            product.get_absolute_url(),
+            f'/catalog/product/{product.slug}/'
+        )
 
     def test_display_id(self):
         """Проверка метода display_id модели Products."""
 
-        product = ProductsModelTest.product 
+        product = ProductsModelTest.product
         self.assertEquals(product.display_id(), '00001')
 
     def test_sell_price(self):
         """Проверка метода sell_price модели Products."""
 
-        product = ProductsModelTest.product 
+        product = ProductsModelTest.product
         self.assertEquals(product.sell_price(), 279.92)

@@ -8,14 +8,20 @@ from goods.models import Categories, Products
 
 @admin.register(Categories)
 class CategoriesAdmin(admin.ModelAdmin):
+    """Настройки модели Категории
+    для отображения в панели администратора."""
+
     prepopulated_fields = {
         'slug': ('name',)
     }
-    list_display = ['name',]
+    list_display = ['name', ]
 
 
 @admin.register(Products)
 class ProductsAdmin(admin.ModelAdmin):
+    """Настройки модели Продукт
+    для отображения в панели администратора."""
+
     prepopulated_fields = {
         'slug': ('name',)
     }
@@ -40,4 +46,4 @@ class ProductsAdmin(admin.ModelAdmin):
         ('price', 'discount'),
         'quantity'
     ]
-    list_filter = ['category',]
+    list_filter = ['category', ]

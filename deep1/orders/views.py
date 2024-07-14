@@ -17,12 +17,15 @@ load_dotenv()
 
 
 class CreateOrderView(FormView):
+    """Представление для создания заказа."""
 
     template_name = 'orders/create_order.html'
     form_class = CreateOrderForm
     success_url = reverse_lazy('main:index')
 
     def form_valid(self, form):
+        """Валидация формы оформления заказа."""
+
         try:
             with transaction.atomic():
                 cart_items = get_user_carts(self.request)
@@ -40,7 +43,7 @@ class CreateOrderView(FormView):
                         pickup_place=form.cleaned_data['pickup_place'],
                         send_to_email=form.cleaned_data['send_to_email'],
                     )
-                        
+
                     mail_text = (
                         f'{order.user_first_name}, '
                         'Вы сделали заказ на сайте журнала "Бездна":\n\n'
@@ -100,18 +103,25 @@ class CreateOrderView(FormView):
                     cart_items.delete()
 
                     messages.success(self.request, 'Заказ оформлен!')
-                        
+
                     return redirect('main:index')
-                    
+
         except ValidationError as e:
             messages.success(self.request, str(e))
             return redirect('orders:create-order')
-    
+
     def form_invalid(self, form):
-        messages.error(self.request, 'Возникли трудности при оформлении заказа!')
+        """действия при невалидной форме оформления заказа."""
+
+        messages.error(
+            self.request,
+            'Возникли трудности при оформлении заказа!'
+        )
         return redirect('orders:create-order')
-    
+
     def get_context_data(self, **kwargs):
+        """Формирование словаря контекста страницы оформления заказа."""
+
         context = super().get_context_data(**kwargs)
         context['title'] = 'Бездна - Оформление заказа'
         context['order'] = True
@@ -131,7 +141,7 @@ class CreateOrderView(FormView):
 #                         order = Order.objects.create(
 #                             **form.cleaned_data
 #                         )
-                        
+
 #                         mail_text = (
 #                             f'{order.user_first_name}, '
 #                             'Вы сделали заказ на сайте журнала "Бездна":\n\n'
@@ -182,9 +192,9 @@ class CreateOrderView(FormView):
 #                         cart_items.delete()
 
 #                         messages.success(request, 'Заказ оформлен!')
-                        
+
 #                         return redirect('main:index')
-                    
+
 #             except ValidationError as e:
 #                 messages.success(request, str(e))
 #                 return redirect('main:index')

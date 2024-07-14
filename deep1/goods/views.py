@@ -1,12 +1,11 @@
 import os
 from typing import Any
 
-from django.conf import settings
 # from django.core.paginator import Paginator
 # from django.db.models import QuerySet
 from django.db.models.base import Model as Model
 # from django.shortcuts import get_list_or_404
-from django.http import FileResponse, Http404, HttpResponse
+from django.http import Http404, HttpResponse
 from django.views import View
 from django.views.generic import DetailView, ListView
 
@@ -14,7 +13,8 @@ from goods.models import Products
 
 
 class CatalogView(ListView):
-    
+    """Представление для модели Каталог."""
+
     model = Products
     template_name = 'goods/catalog.html'
     context_object_name = 'goods'
@@ -22,24 +22,28 @@ class CatalogView(ListView):
     allow_empty = False
 
     def get_queryset(self):
+        """Получение списка объектов для отображения."""
+
         category_slug = self.kwargs.get('category_slug')
         on_sale = self.request.GET.get('on_sale')
         order_by = self.request.GET.get('order_by')
-        
+
         if category_slug == 'all':
             goods = super().get_queryset()
         else:
             goods = super().get_queryset().filter(category__slug=category_slug)
-            
+
         if on_sale:
             goods = goods.filter(discount__gt=0)
 
         if order_by and order_by != 'default':
             goods = goods.order_by(order_by)
-        
+
         return goods
 
     def get_context_data(self, **kwargs):
+        """Заполнение словаря контекста категории."""
+
         context = super().get_context_data(**kwargs)
         context['title'] = 'Бездна - каталог'
         context['slug_url'] = self.kwargs.get('category_slug')
@@ -47,28 +51,31 @@ class CatalogView(ListView):
 
 
 class ProductView(DetailView):
+    """представление для модели Продукты."""
 
     template_name = 'goods/product.html'
     slug_url_kwarg = 'product_slug'
     context_object_name = 'product'
-    
+
     def get_object(self, queryset=None) -> Model:
+        """Получение продукта по слагу."""
+
         product = Products.objects.get(
             slug=self.kwargs.get(self.slug_url_kwarg)
         )
         return product
-    
+
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        """Заполнение словаря контекста продукта."""
+
         context = super().get_context_data(**kwargs)
         context['title'] = self.object.name
         return context
 
 
 class FileDownloadView(View):
-    # Set FILE_STORAGE_PATH value in settings.py
-    folder_path = os.path.join(settings.MEDIA_ROOT, 'pdf_files/')
-    
-    # Set the content type value
+    """Представление для скачивания файла с сайта."""
+
     content_type_value = 'text/plain'
     slug_url_kwarg = 'product_slug'
 
@@ -77,7 +84,7 @@ class FileDownloadView(View):
             slug=self.kwargs.get(self.slug_url_kwarg)
         )
         file_name = f'{product.name}.pdf'
-               
+
         file_path = os.path.join(self.folder_path, file_name)
         if os.path.exists(file_path):
             with open(file_path, 'rb') as f:

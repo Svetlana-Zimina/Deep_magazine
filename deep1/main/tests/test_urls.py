@@ -4,6 +4,7 @@ from django.test import Client, TestCase
 
 
 class MainURLTests(TestCase):
+    """Тестирование путей приложения main."""
 
     @classmethod
     def setUpClass(cls):

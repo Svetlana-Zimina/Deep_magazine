@@ -31,7 +31,7 @@ STATUS_LIST = (
 
 
 class OrderitemQueryset(models.QuerySet):
-    
+
     def total_price(self):
         """Полная сумма товаров в заказе."""
 
@@ -42,11 +42,13 @@ class OrderitemQueryset(models.QuerySet):
 
         if self:
             return sum(cart.quantity for cart in self)
-        
+
         return 0
 
 
 class Order(models.Model):
+    """Модель Заказы."""
+
     # user = models.ForeignKey(
     #     User,
     #     verbose_name='Пользователь',
@@ -123,6 +125,8 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
+    """Промежуточная модель Заказ-Продукт."""
+
     order = models.ForeignKey(
         Order,
         on_delete=models.CASCADE,
@@ -161,6 +165,8 @@ class OrderItem(models.Model):
     objects = OrderitemQueryset.as_manager
 
     def products_price(self):
+        """Получение цены продукта."""
+
         return round(self.price * self.quantity, 2)
 
     def __str__(self):

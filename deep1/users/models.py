@@ -3,12 +3,14 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 
 class User(AbstractUser):
+    """Модель Пользователь."""
+
     phone = PhoneNumberField(
         verbose_name='Номер телефона',
     )
 
     class Meta:
-        ordering = ['id',]
+        ordering = ['id', ]
         verbose_name = 'Пользователь'
         verbose_name_plural = 'Пользователи'
 

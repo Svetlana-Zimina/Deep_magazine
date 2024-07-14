@@ -26,6 +26,9 @@ class OrderItemAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
+    """Настройки модели Заказы
+    для отображения в панели администратора."""
+
     list_display = (
         "id",
         "user_last_name",

@@ -3,6 +3,8 @@ from django.urls import reverse
 
 
 class Categories(models.Model):
+    """Модель Категория."""
+
     name = models.CharField(
         verbose_name='Название',
         max_length=150,
@@ -26,6 +28,8 @@ class Categories(models.Model):
 
 
 class Products(models.Model):
+    """Модель Продукты."""
+
     name = models.CharField(
         verbose_name='Название',
         max_length=150,
@@ -93,17 +97,19 @@ class Products(models.Model):
     )
 
     class Meta:
-        ordering = ['id',]
+        ordering = ['id', ]
         db_table = 'product'
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты'
 
     def __str__(self):
         return self.name
-    
+
     def get_absolute_url(self):
+        """Формирование нужного URL-адреса по слагу."""
+
         return reverse("catalog:product", kwargs={"product_slug": self.slug})
-    
+
     def display_id(self):
         """Отображение id товара на сайте."""
 
@@ -113,7 +119,6 @@ class Products(models.Model):
         """Расчет стоимости товара с учетом скидки."""
 
         if self.discount:
-            return round(self.price - self.price*self.discount/100, 2)
+            return round(self.price - self.price * self.discount / 100, 2)
 
         return self.price
-    

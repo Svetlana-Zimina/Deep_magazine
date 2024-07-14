@@ -23,6 +23,7 @@ PICKUP_PLACES = (
 
 
 class CreateOrderForm(forms.Form):
+    """Форма оформления заказа."""
 
     user_first_name = forms.CharField(max_length=255)
     user_last_name = forms.CharField(max_length=255)
@@ -39,8 +40,10 @@ class CreateOrderForm(forms.Form):
     )
     delivery_address = forms.CharField(max_length=255, required=False)
     send_to_email = forms.BooleanField(required=False)
-    
+
     def clean_phone(self):
+        """Проверка номера телефона на соответствие шаблону."""
+
         data = self.cleaned_data['phone']
 
         pattern = re.compile(r"^((\+7|7|8)+([0-9]){10})$")

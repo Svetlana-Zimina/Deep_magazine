@@ -4,6 +4,7 @@ from carts.models import Cart
 
 
 class CartTabAdmin(admin.TabularInline):
+
     model = Cart
     fields = (
         'product',
@@ -21,6 +22,9 @@ class CartTabAdmin(admin.TabularInline):
 
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):
+    """Настройки модели Корзина
+    для отображения в панели администратора"""
+
     list_display = [
         'id',
         'user_display',

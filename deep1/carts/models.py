@@ -5,7 +5,8 @@ from users.models import User
 
 
 class CartQueryset(models.QuerySet):
-    
+    """Класс для получения суммы и количества товаров в корзине."""
+
     def total_price(self):
         """Полная сумма товаров в корзине."""
 
@@ -16,11 +17,12 @@ class CartQueryset(models.QuerySet):
 
         if self:
             return sum(cart.quantity for cart in self)
-        
+
         return 0
 
 
 class Cart(models.Model):
+    """Модель Корзина."""
 
     user = models.ForeignKey(
         User,
@@ -61,7 +63,7 @@ class Cart(models.Model):
     def __str__(self):
         if self.user:
             return f'Корзина {self.user.first_name} {self.user.last_name} | Товар {self.product.name} | Количество {self.quantity}'
-        
+
         return f'Анонимная корзина | Товар {self.product.name} | Количество {self.quantity}'
 
     def products_price(self):
