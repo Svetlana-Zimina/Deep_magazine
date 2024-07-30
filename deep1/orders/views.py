@@ -98,6 +98,13 @@ class CreateOrderView(FormView):
                         ['Zima271985@yandex.ru'],
                         fail_silently=False,
                     )
+                    send_mail(
+                        f'Новый_Заказ №{order.id}',
+                        f'Появился новый заказ: №{order.id}',
+                        os.getenv('EMAIL_HOST_USER'),
+                        ['Zima271985@yandex.ru'],
+                        fail_silently=False,
+                    )
 
                     # Очистить корзину пользователя после создания заказа
                     cart_items.delete()
@@ -183,7 +190,7 @@ class CreateOrderView(FormView):
 #                         send_mail(
 #                             f'Журнал "Бездна"_Заказ №{order.id}',
 #                             mail_text,
-#                             'Zima271985@yandex.ru',
+#                             os.getenv('EMAIL_HOST_USER'),
 #                             [order.email],
 #                             fail_silently=False,
 #                         )
