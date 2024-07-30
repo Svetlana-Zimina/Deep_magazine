@@ -10,6 +10,10 @@ from carts.utils import get_user_carts
 
 from orders.forms import CreateOrderForm
 from orders.models import Order, OrderItem
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 
 class CreateOrderView(FormView):
@@ -70,7 +74,7 @@ class CreateOrderView(FormView):
                     send_mail(
                         f'Журнал "Бездна"_Заказ №{order.id}',
                         mail_text,
-                        'speleonews@yandex.ru',
+                        os.getenv('EMAIL_HOST_USER'),
                         [order.email],
                         fail_silently=False,
                     )
@@ -78,7 +82,7 @@ class CreateOrderView(FormView):
                     send_mail(
                         f'Новый_Заказ №{order.id}',
                         f'Появился новый заказ: №{order.id}',
-                        'speleonews@yandex.ru',
+                        os.getenv('EMAIL_HOST_USER'),
                         ['Zima271985@yandex.ru'],
                         fail_silently=False,
                     )
@@ -160,7 +164,7 @@ class CreateOrderView(FormView):
 #                         send_mail(
 #                             f'Журнал "Бездна"_Заказ №{order.id}',
 #                             mail_text,
-#                             'Zima271985@yandex.ru',
+#                             os.getenv('EMAIL_HOST_USER'),
 #                             [order.email],
 #                             fail_silently=False,
 #                         )
