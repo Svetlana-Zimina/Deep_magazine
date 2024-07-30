@@ -2,27 +2,21 @@ import os
 from pathlib import Path
 
 from django.conf.global_settings import AUTH_USER_MODEL, MEDIA_ROOT, MEDIA_URL
+from django.core.management.utils import get_random_secret_key
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-2i=lzc8i5mhwe%u6f3&rrms5$e+m%gaee(ev6pvgilfqs=#fg!'
+SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'localhost',
-    '127.0.0.1',
-    '[::1]',
-    'testserver',
-]
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', 'localhost,127.0.0.1').split(',')
 
 
 # Application definition
@@ -79,22 +73,20 @@ WSGI_APPLICATION = 'deep.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'deep',
-        'USER': 'deep',
-        'PASSWORD': 'deep',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
 
 
 # Password validation
-# https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -148,12 +140,12 @@ INTERNAL_IPS = [
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
-# EMAIL_HOST = 'smtp.yandex.ru'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
+EMAIL_HOST = os.getenv('EMAIL_HOST'),
+EMAIL_PORT = os.getenv('EMAIL_PORT'),
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS'),
 
-# EMAIL_HOST_USER = 'Zima271985@yandex.ru'
-# EMAIL_HOST_PASSWORD = 'ylmrrezmqubrnpto'
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER'),
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD'),
 
 # EMAIL_SERVER = EMAIL_HOST_USER
 # DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
