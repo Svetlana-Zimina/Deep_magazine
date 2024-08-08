@@ -95,14 +95,7 @@ class CreateOrderView(FormView):
                         f'Новый_Заказ №{order.id}',
                         f'Появился новый заказ: №{order.id}',
                         os.getenv('EMAIL_HOST_USER'),
-                        ['Zima271985@yandex.ru'],
-                        fail_silently=False,
-                    )
-                    send_mail(
-                        f'Новый_Заказ №{order.id}',
-                        f'Появился новый заказ: №{order.id}',
-                        os.getenv('EMAIL_HOST_USER'),
-                        ['Zima271985@yandex.ru'],
+                        ['speleonews@yandex.ru'],
                         fail_silently=False,
                     )
 
