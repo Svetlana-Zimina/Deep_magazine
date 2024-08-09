@@ -1,1 +1,0 @@
-[{"model": "goods.categories", "pk": 2, "fields": {"name": "Все товары", "slug": "all"}}, {"model": "goods.categories", "pk": 3, "fields": {"name": "Журналы", "slug": "zhurnaly"}}]
