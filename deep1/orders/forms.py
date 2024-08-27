@@ -29,7 +29,7 @@ class CreateOrderForm(forms.Form):
     user_last_name = forms.CharField(max_length=255)
     phone = forms.CharField()
     email = forms.CharField(max_length=255)
-    requires_delivery = forms.BooleanField(required=False)
+    # requires_delivery = forms.BooleanField(required=False)
     delivery_type = forms.ChoiceField(
         choices=DELIVERY_TYPES,
         required=False

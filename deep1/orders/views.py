@@ -37,17 +37,23 @@ class CreateOrderView(FormView):
                         user_last_name=form.cleaned_data['user_last_name'],
                         phone=form.cleaned_data['phone'],
                         email=form.cleaned_data['email'],
-                        requires_delivery=form.cleaned_data['requires_delivery'],
+                        # requires_delivery=form.cleaned_data['requires_delivery'],
                         delivery_type=form.cleaned_data['delivery_type'],
                         delivery_address=form.cleaned_data['delivery_address'],
                         pickup_place=form.cleaned_data['pickup_place'],
                         send_to_email=form.cleaned_data['send_to_email'],
                     )
 
-                    mail_text = (
+                    if order.delivery_type == '-' and order.pickup_place == '-':
+                        order.send_to_email = True
+                        order.save(update_fields=['send_to_email'])
+
+                    mail_customer_text = (
                         f'{order.user_first_name}, '
                         'Вы сделали заказ на сайте журнала "Бездна":\n\n'
                     )
+
+                    ordered_products = ''
 
                     # Создать заказанные товары
                     for cart_item in cart_items:
@@ -70,10 +76,11 @@ class CreateOrderView(FormView):
                         product.quantity -= quantity
                         product.save()
 
-                        mail_text = mail_text + f'{product.name} - {quantity} шт' + '\n'
+                        mail_customer_text = mail_customer_text + f'{product.name} - {quantity} шт' + '\n'
+                        ordered_products += f'{product.name} - {quantity} шт' + '\n'
 
                     # Отправка подтверждения на электронную почту
-                    mail_text += (
+                    mail_customer_text += (
                         f'\nВариант доставки: {order.delivery_type}\n'
                         f'Адрес доставки: {order.delivery_address}\n'
                         f'Пункт самовывоза: {order.pickup_place}\n'
@@ -83,9 +90,23 @@ class CreateOrderView(FormView):
                         '(в личные сообщения): vk.com/speleonews '
                         'с указанием имени, фамилии и номера заказа'
                     )
+
+                    # Отправка письма с данными о заказе на электронную почту
+                    mail_seller_text = (
+                        f'Заказ №: {order.id}\n'
+                        f'Дата создания заказа: {order.created_timestamp}\n'
+                        f'Заказчик: {order.user_first_name} {order.user_last_name}\n'
+                        f'Контактные данные: {order.phone} {order.email}\n'
+                        f'\nВариант доставки: {order.delivery_type}\n'
+                        f'Адрес доставки: {order.delivery_address}\n'
+                        f'Пункт самовывоза: {order.pickup_place}\n'
+                        f'Выслать на электронную почту: {order.send_to_email}\n\n'
+                        'Заказанные товары:\n'
+                    ) + ordered_products
+
                     send_mail(
                         f'Журнал "Бездна"_Заказ №{order.id}',
-                        mail_text,
+                        mail_customer_text,
                         os.getenv('EMAIL_HOST_USER'),
                         [order.email],
                         fail_silently=False,
@@ -93,9 +114,9 @@ class CreateOrderView(FormView):
 
                     send_mail(
                         f'Новый_Заказ №{order.id}',
-                        f'Появился новый заказ: №{order.id}',
+                        mail_seller_text,
                         os.getenv('EMAIL_HOST_USER'),
-                        ['speleonews@yandex.ru'],
+                        ['Zima271985@yandex.ru'],
                         fail_silently=False,
                     )
 

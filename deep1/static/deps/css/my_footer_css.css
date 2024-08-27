@@ -26,13 +26,9 @@ footer{
 .menu li a {
   font-size: 1.0em;
   color: #fff;
-  opacity: 0.75;
   margin: 0 75px;
   text-decoration: none;
   display: inline-block;
-}
-.menu li a:hover {
-  opacity: 1;
 }
 footer p {
   color: #fff;

@@ -51,7 +51,7 @@ class OrderAdmin(admin.ModelAdmin):
     list_filter = (
         "user_first_name",
         "user_last_name",
-        "requires_delivery",
+        # "requires_delivery",
         "send_to_email",
         "status",
         "is_paid",

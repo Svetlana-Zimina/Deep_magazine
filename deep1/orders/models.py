@@ -77,10 +77,10 @@ class Order(models.Model):
         max_length=100,
         verbose_name='Электронная почта'
     )
-    requires_delivery = models.BooleanField(
-        default=False,
-        verbose_name='Требуется доставка'
-    )
+    # requires_delivery = models.BooleanField(
+    #     default=False,
+    #     verbose_name='Требуется доставка'
+    # )
     delivery_type = models.CharField(
         max_length=250,
         verbose_name='Способ доставки',

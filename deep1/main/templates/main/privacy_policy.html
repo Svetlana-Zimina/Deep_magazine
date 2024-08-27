@@ -6,13 +6,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% comment %} <link rel="stylesheet" href="{% static 'deps/css/bootstrap/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'deps/css/my_css.css' %}"> {% endcomment %}
     <!-- Favicons для разных платформ -->
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'deps/favicon/apple-touch-icon.png' %}">
+    <link rel="icon" href="{% static 'deps/favicon/favicon.ico' %}" type="image">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'deps/favicon/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'deps/favicon/favicon-16x16.png' %}">
-    <link rel="manifest" href="{% static 'deps/favicon/site.webmanifest' %}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
     <title>{{ title }} </title>
 </head>
 <style>
@@ -35,6 +34,10 @@
 </style>
 <body>
 	<div class="main-page">
+        <div>
+            <a href="{% url 'main:index' %}" style="font-size:20px; color: red">На главную</a>
+        </div>
+                
         <h1>Политика конфиденциальности и обработки персональных данных интернет-магазина www.bezdna-asu.ru</h1>
 
         <p>Настоящая Политика в отношении персональных данных интернет-магазина www.bezdna-asu.ru, 
