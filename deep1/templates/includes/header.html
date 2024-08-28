@@ -3,21 +3,21 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: black" data-bs-theme="dark">
             <div class="container">
-                <a class="navbar-brand" href="{% url 'main:index' %}"><img src="{% static 'deps/images/logo_bezdna.png' %}" width="250" 
+                <a class="navbar-brand" href="{% url 'main:index' %}"><img src="{% static 'deps/images/bezdna_2.png' %}" width="250" 
                     height="100" border="0"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-left: 100px">
+                    <ul class="navbar-nav text-center">
                         <li class="nav-item">
-                            <a class="nav-link  text-white" href="{% url 'main:index' %}">Главная</a>
+                            <a class="nav-link  text-white" href="{% url 'main:index' %}" style="margin-right: 25px">Главная</a>
                         </li>
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle text-white" href="" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                                data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: 25px">
                                 Каталог
                             </a>
                             <ul class="dropdown-menu">
@@ -29,7 +29,7 @@
                         </li>
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle text-white" href="" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                                data-bs-toggle="dropdown" aria-expanded="false" style="margin-right: 25px">
                                 Информация
                             </a>
                             <ul class="dropdown-menu">
@@ -39,17 +39,17 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link  text-white" href="{% url 'user:users-cart' %}">Корзина</a>
+                            <a class="nav-link  text-white" href="{% url 'user:users-cart' %}" style="margin-right: 25px">Корзина</a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <a class="navbar-brand" href="https://vk.com/speleonews"><img src="{% static 'deps/icons/vk.png' %}" width="40" 
+            <a class="navbar-brand" href="https://vk.com/speleonews" style="margin-top: 12px; margin-right: 30px"><img src="{% static 'deps/icons/vk.png' %}" width="40" 
                 height="40" border="0"></a>
-            <a class="navbar-brand" href="https://t.me/bezdnaASU"><img src="{% static 'deps/icons/telegram.png' %}" width="40" 
+            <a class="navbar-brand" href="https://t.me/bezdnaASU" style="margin-top: 12px; margin-right: 10px"><img src="{% static 'deps/icons/telegram.png' %}" width="40" 
                 height="40" border="0"></a>
             <a class="navbar-brand" href="https://vk.com/speleoural">
-                <img src="{% static 'deps/images/ASU.png' %}" style="width:150px;height:80px;">
+                <img src="{% static 'deps/images/ASU.png' %}" style="width:145px;height:75px;">
             </a>
         </nav>
     </header>

@@ -201,29 +201,6 @@ $(document).ready(function () {
     });
 
     // Обработчик события радиокнопки выбора способа доставки
-    
-    // $("input[name='requires_delivery']").change(function () {
-    //     var selectedValue = $(this).val();
-    //     // Скрываем или отображаем input ввода адреса доставки
-    //     if (selectedValue === "0") {
-    //         $("#deliveryAddressField").show(),
-    //         $("#deliveryTypeField").show(),
-    //         $("#pickupPlaceField").hide(),
-    //         $("#sendToEmailField").hide();
-                
-    //     } else if (selectedValue === "2") {
-    //         $("#deliveryAddressField").hide(),
-    //         $("#deliveryTypeField").hide(),
-    //         $("#pickupPlaceField").hide(),
-    //         $("#sendToEmailField").hide();
-    //     } else {
-    //         $("#deliveryAddressField").hide(),
-    //         $("#deliveryTypeField").hide(),
-    //         $("#pickupPlaceField").show(),
-    //         $("#sendToEmailField").hide();
-    //     }
-    // });
-    
     $(function() {
         $("#" + $(".form-check-input:checked").val()).show();
         $(".form-check-input").change(function(){
@@ -232,6 +209,14 @@ $(document).ready(function () {
         });
     });
 
-    
-
+    // Слайдер фото в карте товара
+    jQuery('.bxslider').bxSlider({
+        pager: true,
+		controls: false,
+		minSlides: 3,
+		maxSlides: 3,
+		slideMargin: 20,
+        slideWidth: 350     
+	});
+  
 });

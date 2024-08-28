@@ -13,90 +13,254 @@
         <div class="col-lg-10">
             <!-- Контент на странице -->
             <div class="row">
-            <div class="container mt-5">
-                <div class="card mb-4 custom-shadow">
+            <div class="container mt-5" >
+                <div class="card mb-4 custom-shadow" style="overflow:hidden">
                     <div class="row">
-                        {% if product.image %}
-                            <!-- Миниатюры изобрадение 1 -->
-                            <div class="col-md-4">
-                                <img src="{{ product.image.url }}"
-                                    class="img-thumbnail; img-same-size" data-bs-toggle="modal" data-bs-target="#imageModal1">
-                            </div>
-                    
-                            <!-- Увеличить изображение в модальном окне -->
-                            <div class="modal fade" id="imageModal1" tabindex="-1"
-                                aria-labelledby="imageModal1Label" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="imageModal1Label">{{ product.name }}</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Закрыть"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img src="{{ product.image.url }}"
-                                                class="img-fluid" alt="Изображение 1">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endif %}
-
-                        {% if product.image_2 %}
-                            <!-- Миниатюры изображение 2 -->
-                            <div class="col-md-4">
-                                <img src="{{ product.image_2.url }}"
+                        <ul class="bxslider">
+                            <li>
+                                {% if product.image %}
+                                <!-- Миниатюры изображение 1 -->
+                                    <img src="{{ product.image.url }}"
+                                        class="img-thumbnail; img-same-size" data-bs-toggle="modal" data-bs-target="#imageModal1">
+                                {% endif %}
+                            </li>
+                            <li>
+                                {% if product.image_2 %}
+                                <!-- Миниатюры изображение 2 -->
+                                    <img src="{{ product.image_2.url }}"
                                     class="img-thumbnail; img-same-size" data-bs-toggle="modal" data-bs-target="#imageModal2">
-                            </div>
-
-                            <!-- Увеличить изображение 2 в модальном окне -->
-                            <div class="modal fade" id="imageModal2" tabindex="-1"
-                                aria-labelledby="imageModal2Label" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="imageModal2Label">{{ product.name }}</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Закрыть"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img src="{{ product.image_2.url }}"
-                                                class="img-fluid" alt="Изображение 2">
-                                        </div>
+                                {% endif %}
+                            </li>
+                            <li>
+                                {% if product.image_3 %}
+                                <!-- Миниатюры изображение 3 -->
+                                    <img src="{{ product.image_3.url }}"
+                                    class="img-thumbnail; img-same-size" data-bs-toggle="modal" data-bs-target="#imageModal3">
+                                {% endif %}
+                            </li>
+                            <li>
+                                {% if product.image_4 %}
+                                <!-- Миниатюры изображение 4 -->
+                                    <img src="{{ product.image_4.url }}"
+                                    class="img-thumbnail; img-same-size" data-bs-toggle="modal" data-bs-target="#imageModal4">
+                                {% endif %}
+                            </li>
+                            <li>
+                                {% if product.image_5 %}
+                                <!-- Миниатюры изображение 5 -->
+                                    <img src="{{ product.image_5.url }}"
+                                    class="img-thumbnail; img-same-size" data-bs-toggle="modal" data-bs-target="#imageModal5">
+                                {% endif %}
+                            </li>
+                            <li>
+                                {% if product.image_6 %}
+                                <!-- Миниатюры изображение 6 -->
+                                    <img src="{{ product.image_6.url }}"
+                                    class="img-thumbnail; img-same-size" data-bs-toggle="modal" data-bs-target="#imageModal6">
+                                {% endif %}
+                            </li>
+                            <li>
+                                {% if product.image_7 %}
+                                <!-- Миниатюры изображение 7 -->
+                                    <img src="{{ product.image_7.url }}"
+                                    class="img-thumbnail; img-same-size" data-bs-toggle="modal" data-bs-target="#imageModal7">
+                                {% endif %}
+                            </li>
+                            <li>
+                                {% if product.image_8 %}
+                                <!-- Миниатюры изображение 8 -->
+                                    <img src="{{ product.image_8.url }}"
+                                    class="img-thumbnail; img-same-size" data-bs-toggle="modal" data-bs-target="#imageModal8">
+                                {% endif %}
+                            </li>
+                            <li>
+                                {% if product.image_9 %}
+                                <!-- Миниатюры изображение 9 -->
+                                    <img src="{{ product.image_9.url }}"
+                                    class="img-thumbnail; img-same-size" data-bs-toggle="modal" data-bs-target="#imageModal9">
+                                {% endif %}
+                            </li>
+                        </ul>
+                        
+                        {% if product.image %}
+                        <!-- Увеличить изображение 1 в модальном окне -->
+                        <div class="modal fade" id="imageModal1" tabindex="-1"
+                            aria-labelledby="imageModal1Label" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="imageModal1Label">{{ product.name }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Закрыть"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="{{ product.image.url }}"
+                                            class="img-fluid" alt="Изображение 1">
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        {% endif %}
+                        
+                        {% if product.image_2 %}
+                        <!-- Увеличить изображение 2 в модальном окне -->
+                        <div class="modal fade" id="imageModal2" tabindex="-1"
+                            aria-labelledby="imageModal1Label" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="imageModal1Label">{{ product.name }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Закрыть"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="{{ product.image_2.url }}"
+                                            class="img-fluid" alt="Изображение 2">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         {% endif %}
 
                         {% if product.image_3 %}
-                            <!-- Миниатюры изображение 3 -->
-                            <div class="col-md-4">
-                                <img src="{{ product.image_3.url }}"
-                                    class="img-thumbnail; img-same-size" data-bs-toggle="modal" data-bs-target="#imageModal3">
-                            </div>
-
-                            <!-- Увеличить изображение 3 в модальном окне -->
-                            <div class="modal fade" id="imageModal3" tabindex="-1"
-                                aria-labelledby="imageModal3Label" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="imageModal3Label">{{ product.name }}</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Закрыть"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <img src="{{ product.image_3.url }}"
-                                                class="img-fluid" alt="Изображение 3">
-                                        </div>
+                        <!-- Увеличить изображение 3 в модальном окне -->
+                        <div class="modal fade" id="imageModal3" tabindex="-1"
+                            aria-labelledby="imageModal1Label" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="imageModal1Label">{{ product.name }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Закрыть"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="{{ product.image_3.url }}"
+                                            class="img-fluid" alt="Изображение 3">
                                     </div>
                                 </div>
                             </div>
+                        </div>
                         {% endif %}
 
-                        <div class="col-md-4 ">
-                            <p class="product_id mt-3">id: {{ product.display_id }}</p>
+                        {% if product.image_4 %}
+                        <!-- Увеличить изображение 4 в модальном окне -->
+                        <div class="modal fade" id="imageModal4" tabindex="-1"
+                            aria-labelledby="imageModal1Label" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="imageModal1Label">{{ product.name }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Закрыть"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="{{ product.image_4.url }}"
+                                            class="img-fluid" alt="Изображение 4">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        {% endif %}
+
+                        {% if product.image_5 %}
+                        <!-- Увеличить изображение 5 в модальном окне -->
+                        <div class="modal fade" id="imageModal5" tabindex="-1"
+                            aria-labelledby="imageModal1Label" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="imageModal1Label">{{ product.name }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Закрыть"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="{{ product.image_5.url }}"
+                                            class="img-fluid" alt="Изображение 5">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if product.image_6 %}
+                        <!-- Увеличить изображение 6 в модальном окне -->
+                        <div class="modal fade" id="imageModal6" tabindex="-1"
+                            aria-labelledby="imageModal1Label" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="imageModal1Label">{{ product.name }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Закрыть"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="{{ product.image_6.url }}"
+                                            class="img-fluid" alt="Изображение 6">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if product.image_7 %}
+                        <!-- Увеличить изображение 7 в модальном окне -->
+                        <div class="modal fade" id="imageModal7" tabindex="-1"
+                            aria-labelledby="imageModal1Label" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="imageModal1Label">{{ product.name }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Закрыть"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="{{ product.image_7.url }}"
+                                            class="img-fluid" alt="Изображение 7">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if product.image_8 %}
+                        <!-- Увеличить изображение 8 в модальном окне -->
+                        <div class="modal fade" id="imageModal8" tabindex="-1"
+                            aria-labelledby="imageModal1Label" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="imageModal1Label">{{ product.name }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Закрыть"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="{{ product.image_8.url }}"
+                                            class="img-fluid" alt="Изображение 8">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if product.image_9 %}
+                        <!-- Увеличить изображение 9 в модальном окне -->
+                        <div class="modal fade" id="imageModal9" tabindex="-1"
+                            aria-labelledby="imageModal1Label" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="imageModal1Label">{{ product.name }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Закрыть"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="{{ product.image_9.url }}"
+                                            class="img-fluid" alt="Изображение 9">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
 
                     </div>
                     <!-- Описание товара -->
